@@ -1,11 +1,16 @@
+import logging
 from typing import Literal
 
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
+from src.logging_config import configurar_logging
 from src.predict import prever_churn
 
+
+configurar_logging()
+logger = logging.getLogger(__name__)
 
 # Cria a aplicação FastAPI responsável por disponibilizar
 # o modelo de previsão de churn por meio de uma API HTTP.
@@ -564,6 +569,8 @@ def raiz():
 
 @app.get("/health")
 def verificar_saude():
+    logger.info("Health check solicitado")
+
     """
     Endpoint utilizado para verificar se a API está disponível
     e respondendo corretamente.
@@ -581,4 +588,6 @@ def prever(dados_cliente: DadosCliente):
     e retorna a classificação, a probabilidade e o threshold utilizado.
     """
 
-    return prever_churn(dados_cliente.model_dump())
+    resultado = prever_churn(dados_cliente.model_dump())
+    logger.info("Predição realizada pela API; churn=%s", resultado["churn"])
+    return resultado

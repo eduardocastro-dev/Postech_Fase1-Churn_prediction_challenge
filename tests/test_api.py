@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
 
 from src.api import app
+from src.predict import THRESHOLD
 
 
 # Cria um cliente de teste que permite fazer requisições para a API
@@ -57,5 +58,5 @@ def test_predict():
 
     assert resposta.status_code == 200
     assert resultado["churn"] == 1
-    assert resultado["threshold"] == 0.40
+    assert resultado["threshold"] == THRESHOLD
     assert 0.0 <= resultado["probabilidade"] <= 1.0
