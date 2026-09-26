@@ -274,4 +274,3 @@ python -m pytest tests -v
 
 A dependência `httpx` está declarada no `requirements.txt` para suportar o `TestClient` utilizado
 pelos testes FastAPI.
->>>>>>> upstream/main
