@@ -26,7 +26,15 @@ A API está containerizada com **Docker** e disponível em produção (deploy em
 
 ## 🎯 Modelo final
 
+<<<<<<< HEAD
 Após a avaliação das alternativas desenvolvidas, o modelo selecionado foi uma **Regressão Logística**, com threshold de classificação ajustado para **0,40**.
+=======
+O **baseline** do projeto é uma **Regressão Logística com threshold padrão de 0,50**.
+Após a comparação das alternativas, foi adotada na aplicação uma regra de decisão com
+**threshold de 0,40** sobre as probabilidades produzidas pelo mesmo classificador.
+
+Essa distinção é importante: o threshold não faz parte do treinamento do classificador.
+>>>>>>> upstream/main
 
 Principais resultados obtidos no conjunto de teste:
 
@@ -60,6 +68,7 @@ churn_prediction_challenge/
 │   ├── test_api.py
 │   └── test_predict.py
 ├── .dockerignore
+├── pyproject.toml
 ├── .gitignore
 ├── Dockerfile
 ├── README.md
@@ -86,7 +95,7 @@ churn_prediction_challenge/
 ### 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/eduardocastro-dev/churn_prediction_challenge.git
+git clone https://github.com/eduardocastro-dev/Postech_Fase1-Churn_prediction_challenge.git
 cd churn_prediction_challenge
 ```
 
@@ -244,3 +253,32 @@ Contém os experimentos com diferentes abordagens de modelagem, validação cruz
 - O projeto utiliza o dataset **IBM Telco Customer Churn** e foi desenvolvido com finalidade acadêmica, no contexto do Tech Challenge de Machine Learning Engineering da FIAP.
 - As métricas apresentadas correspondem ao conjunto de dados utilizado no desenvolvimento e **não garantem o mesmo desempenho** em dados externos ou em um ambiente real de produção.
 - A API está containerizada com Docker e implantada em ambiente de nuvem (Render), disponível em [https://churn-prediction-challenge.onrender.com/docs](https://churn-prediction-challenge.onrender.com/docs). Por se tratar de um plano gratuito, a primeira requisição após um período de inatividade pode levar alguns segundos a mais para responder (*cold start*).
+<<<<<<< HEAD
+=======
+
+
+## 🧪 Qualidade e observabilidade
+
+O projeto possui configuração de linting com **Ruff** em `pyproject.toml` e configuração de
+logging na camada da API/predição. O nível de log pode ser controlado pela variável de ambiente
+`LOG_LEVEL`.
+
+Para executar o lint localmente, instale também as dependências de desenvolvimento:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m ruff check .
+```
+
+Para executar os testes:
+
+```bash
+python -m pytest tests -v
+```
+
+A dependência `httpx` está declarada no `requirements.txt` para suportar o `TestClient` utilizado
+pelos testes FastAPI.
+
+> O arquivo `.dockerignore` deve permanecer com o ponto inicial. Isso evita enviar arquivos de
+> desenvolvimento, notebooks, dados brutos e testes desnecessários para o contexto de build.
+>>>>>>> upstream/main

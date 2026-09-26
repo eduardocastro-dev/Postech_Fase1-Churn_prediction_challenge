@@ -1,4 +1,4 @@
-from src.predict import prever_churn
+from src.predict import THRESHOLD, prever_churn
 
 
 # Cliente conhecido cuja probabilidade prevista pelo modelo é inferior
@@ -60,7 +60,7 @@ def test_prever_cliente_sem_churn():
     resultado = prever_churn(CLIENTE_SEM_CHURN)
 
     assert resultado["churn"] == 0
-    assert resultado["threshold"] == 0.40
+    assert resultado["threshold"] == THRESHOLD
     assert 0.0 <= resultado["probabilidade"] <= 1.0
 
 
@@ -73,5 +73,5 @@ def test_prever_cliente_com_churn():
     resultado = prever_churn(CLIENTE_COM_CHURN)
 
     assert resultado["churn"] == 1
-    assert resultado["threshold"] == 0.40
+    assert resultado["threshold"] == THRESHOLD
     assert 0.0 <= resultado["probabilidade"] <= 1.0
