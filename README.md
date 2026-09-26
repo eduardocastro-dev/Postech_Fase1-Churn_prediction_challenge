@@ -274,7 +274,4 @@ python -m pytest tests -v
 
 A dependência `httpx` está declarada no `requirements.txt` para suportar o `TestClient` utilizado
 pelos testes FastAPI.
-
-> O arquivo `.dockerignore` deve permanecer com o ponto inicial. Isso evita enviar arquivos de
-> desenvolvimento, notebooks, dados brutos e testes desnecessários para o contexto de build.
 >>>>>>> upstream/main
