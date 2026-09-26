@@ -26,15 +26,11 @@ A API está containerizada com **Docker** e disponível em produção (deploy em
 
 ## 🎯 Modelo final
 
-<<<<<<< HEAD
-Após a avaliação das alternativas desenvolvidas, o modelo selecionado foi uma **Regressão Logística**, com threshold de classificação ajustado para **0,40**.
-=======
 O **baseline** do projeto é uma **Regressão Logística com threshold padrão de 0,50**.
-Após a comparação das alternativas, foi adotada na aplicação uma regra de decisão com
-**threshold de 0,40** sobre as probabilidades produzidas pelo mesmo classificador.
 
-Essa distinção é importante: o threshold não faz parte do treinamento do classificador.
->>>>>>> upstream/main
+Após a comparação das alternativas desenvolvidas, foi adotada na aplicação uma regra de decisão com **threshold de 0,40** sobre as probabilidades produzidas pelo mesmo classificador.
+
+Essa distinção é importante: o threshold não faz parte do treinamento do classificador. O modelo continua sendo uma **Regressão Logística**, enquanto o threshold de 0,40 é utilizado como regra de decisão na aplicação.
 
 Principais resultados obtidos no conjunto de teste:
 
